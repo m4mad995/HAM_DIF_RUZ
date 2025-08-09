@@ -1,11 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body {
+            background-color: #4576;
+        }
+
+        /* Blur overlay */
+        .blur-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .blur-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* style navbar */
+        /* ============ */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .logo {
+            flex: 1;
+        }
+        
+        .nav-links {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hamburger-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo a {
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: 650;
+            color: rgb(100, 100, 225);
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .logo a:hover {
+            color: whitesmoke;
+        }
+
+        .logo a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: rgb(136, 0, 255);
+            transition: width 0.3s ease;
+        }
+
+        .logo a:hover::after {
+            width: 100%;
+        }
+
+        .logo .sparta {
+            color: rgba(158, 67, 255, 0.8);
+            transition: 0.3s ease;
+        }
+
+        .logo a:hover .sparta {
+            color: whitesmoke;
+        }
+
+        .nav-links {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(29, 29, 29);
+            font-size: 20px;
+            font-weight: 539px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: whitesmoke;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: rgb(132, 0, 255);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* style hamburger */
+        /* =============== */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1002;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: rgb(29, 29, 29);
+            margin: 5px 0;
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Tampilan hamburger saat menu dibuka (kelas .active) */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* CSS untuk menu dan hamburger responsif */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 20px;
+            }
+            
+            .logo {
+                flex: none;
+            }
+            
+            .nav-links {
+                flex: none;
+            }
+            
+            .hamburger-container {
+                flex: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                position: fixed;
+                top: 0;
+                right: -40%;
+                height: 45vh;
+                width: 40%;
+                background-color: #4576;
+                transition: right 0.4s ease-in-out;
+                z-index: 1000;
+                padding: 0;
+                margin: 0;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+                border-radius: 0 0 0 15px;
+            }
+
+            .nav-links ul.open {
+                right: 0;
+            }
+
+            .nav-links {
+                position: static;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+    <!-- header dan navbar -->
+    <header>
+        <nav class="nav">
+            <div class="logo"><a href="#">MIE <span class="sparta">LEZAT😋</span></a></div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="home">Home</a></li>
+                    <li><a href="about">Tentang Kami</a></li>
+                    <li><a href="produk">Produk</a></li>
+                    <li><a href="kontak">Kontak</a></li>
+                </ul>
+
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- home / hero -->
+
+
+    <!-- about section -->
+
+
+    <!-- produk section -->
+
+
+    <!-- kontak section -->
+
+
+     <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links ul');
+        const blurOverlay = document.getElementById('blurOverlay');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            blurOverlay.classList.toggle('active');
+        });
+
+        // Close menu when clicking on blur overlay
+        blurOverlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+            blurOverlay.classList.remove('active');
+        });
+
+        // Close menu when clicking on nav links (optional)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+                blurOverlay.classList.remove('active');
+            });
+        });
+    </script>
 </body>
+
 </html>
