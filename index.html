@@ -15,7 +15,7 @@
         }
 
         body {
-            /* Hapus background-color dari body agar tidak mengganggu background section */
+            background-color: #4576;
         }
 
         /* Blur overlay */
@@ -339,6 +339,165 @@
                 font-size: 1rem;
             }
         }
+
+        /* about section */
+        .about {
+            padding: 15rem 7% 1.4rem;
+            min-height: 100vh;
+        }
+
+        .about h2 {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 3rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .about h2 span {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .about .row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .about .about-img {
+            flex: 1 1 35rem;
+            text-align: center;
+        }
+
+        .about .about-img img {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 20px;
+            border: 6px solid #4576;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about .about-img img:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .about .row .content {
+            flex: 1 1 35rem;
+            padding: 0 2rem;
+        }
+
+        .about .content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .about .content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about .content .price {
+            color: #e74c3c;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .about .content .highlight {
+            background: linear-gradient(120deg, #4576 0%, #4576 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            border-left: 4px solid #4576;
+        }
+/* Responsive design */
+        @media (max-width: 768px) {
+            .about {
+                padding: 6rem 5% 3rem;
+            }
+
+            .about h2 {
+                font-size: 2.2rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .about .row {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .about .about-img img {
+                width: 60%;
+                max-width: 250px;
+            }
+
+            .about .content {
+                padding: 0;
+                text-align: center;
+            }
+
+            .about .content h3 {
+                font-size: 1.8rem;
+            }
+
+            .about .content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about {
+                padding: 4rem 3% 2rem;
+            }
+
+            .about h2 {
+                font-size: 1.8rem;
+            }
+
+            .about .row {
+                padding: 1.5rem;
+            }
+
+            .about .about-img img {
+                width: 70%;
+            }
+
+            .about .content h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about .row {
+            animation: fadeInUp 0.8s ease-out;
+        }
     </style>
 </head>
 
@@ -373,6 +532,30 @@
         </div>
     </section>
 
+
+    <section class="about" id="about">
+        <h2><span>Tentang</span> Kami</h2>
+
+        <div class="row">
+            <div class="about-img">
+                <img src="items/Mie Ayam.jpeg" alt="Mie Ayam Enak" loading="lazy">
+            </div>
+
+            <div class="content">
+                <h3>Kamu Mau Mie Ayam Enak?</h3>
+                <p>Kami menyajikan <strong>Mie Ayam</strong> dengan cita rasa autentik yang telah dipercaya pelanggan selama bertahun-tahun.</p>
+                
+                <div class="highlight">
+                    <p>✨ <span class="price">Harga mulai dari Rp 5.000</span></p>
+                    <p>🍜 Berbagai varian mie dengan bumbu pilihan</p>
+                    <p>🥢 Bahan segar dan berkualitas setiap hari</p>
+                    <p>💯 Rasa yang konsisten dan memuaskan</p>
+                </div>
+                
+                <p><em>Nikmati kelezatan mie ayam kami dengan porsi yang mengenyangkan dan harga yang terjangkau untuk semua kalangan!</em></p>
+            </div>
+        </div>
+    </section>
 
     <script>
         const hamburger = document.querySelector('.hamburger');
