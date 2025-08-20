@@ -573,6 +573,245 @@
             font-weight: bold;
             color: #e74c3c;
         }
+
+        .contact {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            min-height: 100vh;
+            padding: 4rem;
+        }
+
+        .contact-header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact h2 span {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .contact h2 span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .contact-description {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .contact .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+            gap: 0;
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact .row .map {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            border: none;
+            filter: grayscale(20%) contrast(1.2);
+            transition: filter 0.3s ease;
+        }
+
+        .contact .row .map:hover {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .form-container {
+            background: var(--bg);
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .contact .row form p {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .input-group .icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            z-index: 2;
+        }
+
+        .contact .row form .input-group input {
+            width: 100%;
+            padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            color: #333;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact .row form .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .contact .row form .input-group input::placeholder {
+            color: #999;
+            font-weight: 300;
+            text-transform: capitalize;
+        }
+
+        .contact .row form .btn {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact .row form .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .contact .row form .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+        }
+
+        .contact .row form .btn:hover::before {
+            left: 100%;
+        }
+
+        .contact .row form .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Floating animation for icons - Pure CSS */
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0px); }
+            50% { transform: translateY(-50%) translateX(2px); }
+        }
+
+        .input-group:hover .icon {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact .row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact h2 {
+                font-size: 2.2rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-header {
+                padding: 2rem 1rem;
+            }
+
+            .contact-description {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact h2 {
+                font-size: 1.8rem;
+            }
+
+            .form-container {
+                padding: 1.5rem 1rem;
+            }
+
+            body {
+                padding: 1rem 0.5rem;
+            }
+        }
+
+        /* Pulse effect untuk button */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .contact .row form .btn:focus {
+            animation: pulse 2s infinite;
+        }
     </style>
 </head>
 
@@ -683,6 +922,52 @@
                     <h3>Mie Banglasdesh</h3>
                     <p class="price">IDR 19.990</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="kontak">
+        <div class="contact-header">
+            <h2><span>Kontak</span> Kami</h2>
+            <p class="contact-description">Ayo Mampir Ke Restoran Kami Di Jamin Nagih Dan Murah</p>
+        </div>
+        
+        <div class="row">
+            <div class="map-container">
+                <iframe 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31663.317653610422!2d112.74439431211911!3d-7.250547936109677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f99c2845653f%3A0x8c9e5c4255576a6b!2sMie%20Kriting%20Manalagi!5e0!3m2!1sid!2sid!4v1755703419785!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+                </iframe>
+            </div>
+            
+            <div class="form-container">
+                <form action="" method="post">
+                    <p>Ada Yang Perlu Di Tanyakan? Isi Kolom Ini Yaa!!</p>
+                    
+                    <div class="input-group">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <input type="text" name="nama" placeholder="Nama Lengkap" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <input type="tel" name="no_hp" placeholder="Nomor HP" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
             </div>
         </div>
     </section>
