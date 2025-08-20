@@ -14,6 +14,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #4576;
         }
@@ -45,11 +49,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            position: absolute;
+            position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1001;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .logo {
@@ -342,7 +347,7 @@
 
         /* about section */
         .about {
-            padding: 15rem 7% 1.4rem;
+            padding: 4rem;
             min-height: 100vh;
         }
 
@@ -356,7 +361,7 @@
 
         .about h2 span {
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .about .row {
@@ -368,7 +373,7 @@
             background: rgba(255, 255, 255, 0.95);
             padding: 3rem;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
         }
 
@@ -382,13 +387,13 @@
             max-width: 300px;
             border-radius: 20px;
             border: 6px solid #4576;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .about .about-img img:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .about .row .content {
@@ -425,7 +430,8 @@
             margin-top: 1.5rem;
             border-left: 4px solid #4576;
         }
-/* Responsive design */
+
+        /* Responsive design */
         @media (max-width: 768px) {
             .about {
                 padding: 6rem 5% 3rem;
@@ -489,6 +495,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -497,6 +504,74 @@
 
         .about .row {
             animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* == SECTION MENU == */
+        .menu-section {
+            padding: 6rem;
+            text-align: center;
+        }
+
+        .menu-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .menu-section h2 span {
+            color: #e74c3c;
+        }
+
+        .menu-section p {
+            font-size: 1.3rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* Container untuk kartu menu (Responsive by default) */
+        .menu-container {
+            display: grid;
+            /* Trik Grid: Buat kolom sebanyak mungkin dengan lebar minimal 280px */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 5rem;
+            /* Jarak antar kartu */
+        }
+
+        .menu-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            /* Agar gambar tidak keluar dari sudut melengkung */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+        }
+
+        .menu-card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .menu-card-content .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e74c3c;
         }
     </style>
 </head>
@@ -513,7 +588,7 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">Tentang Kami</a></li>
-                        <li><a href="#produk">Produk</a></li>
+                        <li><a href="#menu">Produk</a></li>
                         <li><a href="#kontak">Kontak</a></li>
                     </ul>
                 </div>
@@ -528,7 +603,7 @@
         <div class="hero-content">
             <h1>Kenikmatan Tiada Tara</h1>
             <p>Rasakan sensasi mie lezat dengan resep otentik turun-temurun.</p>
-            <a href="#produk" class="cta-button">Lihat Menu Kami</a>
+            <a href="#menu" class="cta-button">Lihat Menu Kami</a>
         </div>
     </section>
 
@@ -543,16 +618,71 @@
 
             <div class="content">
                 <h3>Kamu Mau Mie Ayam Enak?</h3>
-                <p>Kami menyajikan <strong>Mie Ayam</strong> dengan cita rasa autentik yang telah dipercaya pelanggan selama bertahun-tahun.</p>
-                
+                <p>Kami menyajikan <strong>Mie Ayam</strong> dengan cita rasa autentik yang telah dipercaya pelanggan
+                    selama bertahun-tahun.</p>
+
                 <div class="highlight">
                     <p>✨ <span class="price">Harga mulai dari Rp 5.000</span></p>
                     <p>🍜 Berbagai varian mie dengan bumbu pilihan</p>
                     <p>🥢 Bahan segar dan berkualitas setiap hari</p>
                     <p>💯 Rasa yang konsisten dan memuaskan</p>
                 </div>
-                
-                <p><em>Nikmati kelezatan mie ayam kami dengan porsi yang mengenyangkan dan harga yang terjangkau untuk semua kalangan!</em></p>
+
+                <p><em>Nikmati kelezatan mie ayam kami dengan porsi yang mengenyangkan dan harga yang terjangkau untuk
+                        semua kalangan!</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <h2><span>Menu</span> Spesial Kami</h2>
+        <p>Dibuat dengan cinta dan bahan-bahan segar pilihan untuk memanjakan lidah Anda.</p>
+
+        <div class="menu-container">
+            <div class="menu-card">
+                <img src="items/mgorengk.jpg" alt="Mie Goreng">
+                <div class="menu-card-content">
+                    <h3>Mie Goreng Klasik</h3>
+                    <p class="price">IDR 14.999</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="items/mkuahkari.jpg" alt="Mie Kuah">
+                <div class="menu-card-content">
+                    <h3>Mie Kuah Kari</h3>
+                    <p class="price">IDR 17.999</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="items/mayam.jpg" alt="Mie Ayam">
+                <div class="menu-card-content">
+                    <h3>Mie Ayam</h3>
+                    <p class="price">IDR 14.999</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="items/ifumi.jpg" alt="I Fu Mie">
+                <div class="menu-card-content">
+                    <h3>I Fu Mie </h3>
+                    <p class="price">IDR 24.999</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <img src="items/mpadthai.webp" alt="pad thai">
+                <div class="menu-card-content">
+                    <h3>Mi pad thai</h3>
+                    <p class="price">IDR 13.900</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <img src="items/mbangladesh.jpg" alt="mie bangladesh">
+                <div class="menu-card-content">
+                    <h3>Mie Banglasdesh</h3>
+                    <p class="price">IDR 19.990</p>
+                </div>
             </div>
         </div>
     </section>
